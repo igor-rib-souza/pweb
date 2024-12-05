@@ -12,10 +12,11 @@ body {
 }
 
 .container {
-    width: 80%;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header {
@@ -33,6 +34,8 @@ header h1 {
 nav ul {
     list-style-type: none;
     text-align: center;
+    display: flex;
+
 }
 
 nav ul li {
@@ -49,7 +52,14 @@ nav ul li a {
     color: #fff;
     font-size: 16px;
     padding: 10px;
+    display: flex;
+    align-items: center; /* Para alinhar verticalmente o ícone e o texto */
+    transition: background-color 0.3s ease;
 }
+
+nav ul li a i {
+    margin-right: 5px; /* Espaço entre o ícone e o texto */
+    }
 
 nav ul li a:hover {
     background-color: #555;
@@ -67,6 +77,11 @@ nav ul li a:hover {
 
 .cardapio-item {
     margin-bottom: 20px;
+}
+
+.cardapio-item h3 {
+    color: #555; 
+    font-family: "Roboto", Arial, sans-serif
 }
 
 footer {
