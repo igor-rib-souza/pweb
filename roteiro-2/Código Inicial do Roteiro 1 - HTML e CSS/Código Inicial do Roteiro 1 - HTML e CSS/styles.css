@@ -12,6 +12,7 @@ body {
 }
 
 .container {
+    width: 90%;
     margin: 0 auto;
     padding: 20px;
     display: flex;
@@ -22,9 +23,14 @@ body {
 header {
     background-color: #333;
     color: #fff;
+    padding: 10px 0;
     position: fixed;
     width: 100%;
     top: 0;
+    z-index: 1000;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('assets/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 header h1 {
@@ -76,7 +82,17 @@ nav ul li a:hover {
 }
 
 .cardapio-item {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Adicionamos a transição para background-color */
+}
+
+.cardapio-item:hover {
+    transform: translateY(-5px);
+    background-color: #f5f5f5; /* Escolha outra Cor de fundo que o elemento deverá assumir ao passarmos o
+    mouse sobre ele */
 }
 
 .cardapio-item h3 {
@@ -85,11 +101,13 @@ nav ul li a:hover {
 }
 
 footer {
-    background-color: #333;
     color: #fff;
     text-align: center;
     padding: 10px 0;
     position: relative;
     bottom: 0;
     width: 100%;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('assets/baguete.webp');
+    background-size: cover;
+    background-position: center;
 }
