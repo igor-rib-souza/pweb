@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercício 07</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function somarImparesMultpDe3(){
+                soma = 0;
+                var numeros = document.getElementById("txtNumeros").value;
+                numeros = numeros.split(",");
+                for (i = 0; i < numeros.length; i++){
+                    numero = parseInt(numeros[i]);
+
+                    if (numero % 3 == 0 && numero % 2 != 0){
+                        soma += numero;
+                    }
+                }
+                document.write("Total: " + soma);
+            }
+        </script>
+    </head>
+
+    <body>
+        Lista de inteiros: <input type="text" id="txtNumeros">
+        <input type="button" value="Somar ímpares múltiplos de 3" onclick="somarImparesMultpDe3()">
+    </body>
+
+</html> 

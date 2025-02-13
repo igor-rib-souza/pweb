@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercício 09</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function calcular(){
+                var numeros = document.getElementById("txtNumeros").value;
+                numeros = numeros.split(",");
+
+                quantPos = 0
+                quantNeg = 0
+                soma = 0
+
+                for (var i = 0; i < numeros.length; i++){
+                    numeros[i] = parseInt(numeros[i]);
+                }
+
+                numeros.forEach(element => {
+                    soma += element;
+                    if (element > 0){
+                        quantPos++;
+                    } else if (element < 0){
+                        quantNeg++;
+                    }
+                });
+
+                document.write("Média: " + (numeros.length > 0 ? soma / numeros.length : 0) + "<br>");
+                document.write("Quantidade de números positivos: " + quantPos + "<br>");
+                document.write("Quantidade de números negativos: " + quantNeg + "<br>");
+                document.write("Porcentagem de números positivos: " + (numeros.length > 0 ? (quantPos / numeros.length * 100).toFixed(2) : 0) + "%<br>");
+                document.write("Porcentagem de números negativos: " + (numeros.length > 0 ? (quantNeg / numeros.length * 100).toFixed(2) : 0) + "%<br>");
+            }
+        </script>
+    </head>
+
+    <body>
+        Lista de inteiros: <input type="text" id="txtNumeros">
+        <input type="button" value="Calcular" onclick="calcular()">
+    </body>
+
+</html> 

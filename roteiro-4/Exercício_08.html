@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercício 08</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function aplicarFatorial(){
+                var numeros = document.getElementById("txtNumeros").value;
+                numeros = numeros.split(",");
+                for (var i = 0; i < numeros.length; i++){
+                    numero = parseInt(numeros[i]);
+                    document.write("Fatorial de " + numero + ": " + factorialize(numero) + "<br>");
+                }
+            }
+
+            function factorialize(num) {
+                if (num === 0 || num === 1)
+                    return 1;
+                for (var i = num - 1; i >= 1; i--) {
+                    num *= i;
+                }
+                return num;
+            }
+        </script>
+    </head>
+
+    <body>
+        Lista de inteiros: <input type="text" id="txtNumeros">
+        <input type="button" value="Fatorial" onclick="aplicarFatorial()">
+    </body>
+
+</html> 
