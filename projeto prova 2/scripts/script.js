@@ -70,8 +70,21 @@ const limpaCarrinho = () => {
 //Método http para usar: GET
 //Resposta do Reject: reject('Erro ao consultar o CEP'))
 const buscarEndereco = (cep) => {
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
     return new Promise((resolve, reject) => {
-        //TODO
+        fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                reject('Erro ao consultar o CEP');
+            }
+            console.log(response);
+            return response.json();
+        }).then(data => {
+            if (data.erro){
+                reject('CEP não encontrado');
+            }
+            resolve(data);
+        })
     });
 }
 
@@ -80,7 +93,11 @@ const consultaCep = () => {
     if (cep.length === 8) {
         buscarEndereco(cep)
             .then(data => {
-                //TODO
+                console.log(data);
+                document.getElementById('logradouro').value = data.logradouro;
+                document.getElementById('complemento').value = data.complemento;
+                document.getElementById('cidade').value = data.localidade;
+                document.getElementById('estado').value = data.uf;
             })
             .catch(error => alert(error));
     } else {
@@ -89,7 +106,7 @@ const consultaCep = () => {
 };
 
 //Etapa 03
-const geraTextoMarketeiro = (dadosFormulario) => {
+const gerarTextoMarketeiro = (dadosFormulario) => {
 
     const card = document.createElement('div');
     card.style.width = '300px';
@@ -103,7 +120,20 @@ const geraTextoMarketeiro = (dadosFormulario) => {
 
     card.innerHTML = `
         <h3 style="text-align: center; color: #333;">Informações do Usuário</h3>
-        <p><strong>Mensagem:</strong> Apresentamos ${dadosFormulario.nome}, residente na rua ${dadosFormulario.endereco}</p>
+        <p><strong>Mensagem:</strong> Apresentamos ${dadosFormulario.nome}, um profissional altamente qualificado e referência no desenvolvimento avançado de
+                                    software. Com uma trajetória pautada pela inovação e excelência, ${dadosFormulario.nome} tem se destacado na criação de
+                                    soluções tecnológicas de alto impacto, na qual tem transformado desafios complexos em sistemas eficientes
+                                    e escaláveis.
+                                    Comunicável e estrategista, ${dadosFormulario.nome} pode ser contatado via e-mail em ${dadosFormulario.mail}, mantendo-se sempre
+                                    disponível para colaborações e projetos que demandem expertise em engenharia de software, inteligência
+                                    artificial e programação web. Seu principal objetivo no momento é ${dadosFormulario.motivo}, reforçando sua busca contínua
+                                    pelo aprimoramento e pela entrega de soluções robustas e inteligentes.
+                                    Atualmente, ${dadosFormulario.nome} reside na dinâmica cidade de ${dadosFormulario.cidade}, no endereço ${dadosFormulario.endereco}, CEP ${dadosFormulario.cep}, onde
+                                    continua sua missão de criar e arquitetar aplicações inovadoras. Seu conhecimento aprofundado em diversas
+                                    linguagens, frameworks e metodologias ágeis o posiciona como um líder técnico capaz de elevar qualquer
+                                    equipe ao mais alto nível de performance.
+                                    Com uma visão futurista e uma abordagem precisa para o desenvolvimento de software, ${dadosFormulario.nome} segue
+                                    transformando o cenário tecnológico com soluções que transcendem expectativas.</p>
     `;
 
     document.body.appendChild(card);
