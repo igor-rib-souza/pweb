@@ -120,20 +120,21 @@ const gerarTextoMarketeiro = (dadosFormulario) => {
 
     card.innerHTML = `
         <h3 style="text-align: center; color: #333;">Informações do Usuário</h3>
-        <p><strong>Mensagem:</strong> Apresentamos ${dadosFormulario.nome}, um profissional altamente qualificado e referência no desenvolvimento avançado de
-                                    software. Com uma trajetória pautada pela inovação e excelência, ${dadosFormulario.nome} tem se destacado na criação de
-                                    soluções tecnológicas de alto impacto, na qual tem transformado desafios complexos em sistemas eficientes
-                                    e escaláveis.
-                                    Comunicável e estrategista, ${dadosFormulario.nome} pode ser contatado via e-mail em ${dadosFormulario.mail}, mantendo-se sempre
-                                    disponível para colaborações e projetos que demandem expertise em engenharia de software, inteligência
-                                    artificial e programação web. Seu principal objetivo no momento é ${dadosFormulario.motivo}, reforçando sua busca contínua
-                                    pelo aprimoramento e pela entrega de soluções robustas e inteligentes.
-                                    Atualmente, ${dadosFormulario.nome} reside na dinâmica cidade de ${dadosFormulario.cidade}, no endereço ${dadosFormulario.endereco}, CEP ${dadosFormulario.cep}, onde
-                                    continua sua missão de criar e arquitetar aplicações inovadoras. Seu conhecimento aprofundado em diversas
-                                    linguagens, frameworks e metodologias ágeis o posiciona como um líder técnico capaz de elevar qualquer
-                                    equipe ao mais alto nível de performance.
-                                    Com uma visão futurista e uma abordagem precisa para o desenvolvimento de software, ${dadosFormulario.nome} segue
-                                    transformando o cenário tecnológico com soluções que transcendem expectativas.</p>
+        <p><strong>Mensagem:</strong>
+        Apresentamos ${dadosFormulario.nome}, um profissional altamente qualificado e referência no desenvolvimento avançado de
+        software. Com uma trajetória pautada pela inovação e excelência, ${dadosFormulario.nome} tem se destacado na criação de
+        soluções tecnológicas de alto impacto, na qual tem transformado desafios complexos em sistemas eficientes
+        e escaláveis.<br>
+        Comunicável e estrategista, ${dadosFormulario.nome} pode ser contatado via e-mail em ${dadosFormulario.mail}, mantendo-se sempre
+        disponível para colaborações e projetos que demandem expertise em engenharia de software, inteligência
+        artificial e programação web. Seu principal objetivo no momento é ${dadosFormulario.motivo}, reforçando sua busca contínua
+        pelo aprimoramento e pela entrega de soluções robustas e inteligentes.<br>
+        Atualmente, ${dadosFormulario.nome} reside na dinâmica cidade de ${dadosFormulario.cidade}, no endereço ${dadosFormulario.endereco}, CEP ${dadosFormulario.cep}, onde
+        continua sua missão de criar e arquitetar aplicações inovadoras. Seu conhecimento aprofundado em diversas
+        linguagens, frameworks e metodologias ágeis o posiciona como um líder técnico capaz de elevar qualquer
+        equipe ao mais alto nível de performance.<br>
+        Com uma visão futurista e uma abordagem precisa para o desenvolvimento de software, ${dadosFormulario.nome} segue
+        transformando o cenário tecnológico com soluções que transcendem expectativas.</p>
     `;
 
     document.body.appendChild(card);
@@ -163,15 +164,24 @@ function submeterDados(event) {
 //Método http para usar: GET
 //Resposta do Reject: reject('Erro ao consultar os Produtos'))
 const consultarDadosConcorrencia = () => {
-
+    const url = `http://demo2582395.mockable.io/produtos`;
     return new Promise((resolve, reject) => {
-        //TODO
+        fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                reject('Erro ao consultar os Produtos');
+            }
+            return response.json();
+        }).then(data => {
+            resolve(data);
+        })
     })
 }
 
 const alterarValoresTabela = (opcao) => {
     consultarDadosConcorrencia().then(data => {
-        //TODO
+        const produtos = data[opcao];
+        modificaValores(produtos);
     }).catch(error => alert(error));
 }
 
