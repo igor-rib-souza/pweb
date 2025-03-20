@@ -180,8 +180,7 @@ const consultarDadosConcorrencia = () => {
 
 const alterarValoresTabela = (opcao) => {
     consultarDadosConcorrencia().then(data => {
-        const produtos = data[opcao];
-        modificaValores(produtos);
+        modificaValores(data[opcao]);
     }).catch(error => alert(error));
 }
 
