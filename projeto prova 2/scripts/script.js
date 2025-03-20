@@ -109,7 +109,7 @@ const consultaCep = () => {
 const gerarTextoMarketeiro = (dadosFormulario) => {
 
     const card = document.createElement('div');
-    card.style.width = '300px';
+    card.style.width = '500px';
     card.style.border = '1px solid #ccc';
     card.style.borderRadius = '10px';
     card.style.padding = '15px';

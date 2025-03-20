@@ -52,3 +52,17 @@ button {
 button:hover {
     background-color: #3949ab;
 }
+
+.marketeiro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f9;
+    margin-top: 50px;
+    padding-bottom: 100px;
+}
+
+.marketeiro .container {
+    width: 500px;
+    padding: 30px;
+}
